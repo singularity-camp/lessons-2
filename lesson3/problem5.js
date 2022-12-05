@@ -1,38 +1,17 @@
-function print() {
-  console.log(this.value);
-  return this;
+function getPath(src, path) {
+  const keys = path.split("."); // ["user", "name", "key", "age"]
+  let value = src;
+  for (const key of keys) {
+    if (value[key]) {
+      value = value[key];
+    } else {
+      return value;
+    }
+  }
+
+  return value;
 }
 
-function add(num) {
-  this.value.push(num);
-  return this;
-}
+const src = { user: { name: "Harry Potter", age: 20 } };
 
-function remove(ind) {
-  this.value.splice(ind, 1);
-  return this;
-}
-
-function update(ind, num) {
-  this.value[ind] = num;
-  return this;
-}
-
-function numbers(arr) {
-  return {
-    value: arr,
-    print,
-    add,
-    remove,
-    update,
-  };
-}
-
-numbers([1, 2, 3])
-  .print() // [1, 2, 3]
-  .add(9)
-  .print() // [1, 2, 3, 9]
-  .remove(2)
-  .print() // [1, 2, 9]
-  .update(1, 3)
-  .print(); // [1, 3, 9]
+console.log(getPath(src, "user.name.hello.what"));
