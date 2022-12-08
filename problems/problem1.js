@@ -1,10 +1,24 @@
-function hello() {
-  console.log("Hello");
+function call(num, fn) {
+  function recurse(i, max, fn) {
+    if (i < max) {
+      fn();
+      recurse(i + 1, max, fn);
+    }
+  }
+
+  recurse(0, num, fn);
 }
 
-function hello2() {
-  console.log("Hello2");
-  hello();
+function Gandalf() {
+  console.log("You shall not pass!");
 }
 
-hello2();
+call(3, Gandalf);
+// You shall not pass!
+// You shall not pass!
+// You shall not pass!
+
+call(1, function run() {
+  console.log("Fly, you fools!");
+});
+// Fly, you fools!

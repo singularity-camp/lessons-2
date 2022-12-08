@@ -42,12 +42,12 @@ class Dog extends Animal {
 const garfield = new Cat("Garfield", "John", "I hate Mondays");
 const scoobydoo = new Dog("Scooby-Doo", "Shaggy", "Scooby-Doo Scooby-Doo");
 
-garfield.speak();
-garfield.move(3);
-garfield.belongsTo();
-scoobydoo.speak();
-scoobydoo.move(4);
-scoobydoo.belongsTo();
+// garfield.speak();
+// garfield.move(3);
+// garfield.belongsTo();
+// scoobydoo.speak();
+// scoobydoo.move(4);
+// scoobydoo.belongsTo();
 
 // const garfield = new Cat()
 
@@ -57,4 +57,6 @@ scoobydoo.belongsTo();
 // owner
 // belongsTo()
 
-console.log(garfield);
+console.log(garfield instanceof Cat);
+console.log(garfield instanceof Animal);
+console.log(garfield instanceof Dog);
