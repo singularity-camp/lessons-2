@@ -19,7 +19,7 @@ async function fetchSpriteUrl(name) {
 
 function showImage(imgUrl) {
   const imgEl = document.getElementById("pokemon-image");
-  imgEl.src = "hello world!";
+  imgEl.src = imgUrl;
 }
 
 async function handleSubmitForm(event) {
