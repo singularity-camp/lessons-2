@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve:lesson11": "http-server ./lesson11/"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/singularity-camp/lessons-2#readme",
   "dependencies": {
+    "http-server": "^14.1.1",
     "prettier": "^2.7.1"
   }
 }

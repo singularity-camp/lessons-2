@@ -4,5 +4,4 @@
 // speak.name = "Terminator"
 //
 // console.log(speak()) // "I'll be back!"
-// console.log(speak.name) // "Terminator"
-
+// console.log(speak.name) // "Terminat
