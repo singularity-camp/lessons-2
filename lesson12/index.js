@@ -1,10 +1,18 @@
-import TodoList from "./TodoList.js";
-import { buttonClickHandler } from "./button.js";
+import TodoList from "./model/TodoList.js";
+import View from "./view/index.js";
 
-function main() {
-  const list = new TodoList();
+const todos = new TodoList();
+const view = new View(todos);
 
-  buttonClickHandler(list);
+function handleLoad() {
+  view?.onInit();
+  todos.addRenderer(view.renderTodos);
 }
 
-main();
+function handleUnload() {
+  view?.onDestroy();
+}
+
+window.addEventListener("load", handleLoad);
+
+window.addEventListener("unload", handleUnload);
