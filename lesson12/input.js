@@ -3,5 +3,7 @@ export function addFromInput() {
 
   const value = inputEl.value;
 
+  inputEl.value = "";
+
   return value;
 }
