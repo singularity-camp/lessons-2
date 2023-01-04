@@ -1,4 +1,5 @@
-import form from "./forms.js";
+// import form from "./forms.js";
+import iin from "./iin.js";
 
 // console.log("I am js");
 
@@ -36,7 +37,8 @@ import form from "./forms.js";
 // document.addEventListener("click", handleClick);
 
 function onLoad() {
-  form();
+  // form();
+  iin();
 }
 
 window.addEventListener("load", onLoad);
