@@ -16,7 +16,7 @@ class Item {
 
     this.text = new ItemText(todo, ind, handleTextClick);
     this.edit = new ItemEditButton(ind, handleEditClick);
-    this.delete = new ItemDeleteButton(ind);
+    this.delete = new ItemDeleteButton(ind, () => this.el.remove());
     this.input = new ItemInput(todo.text, ind);
     this.save = new ItemSaveButton(ind, this._handleSaveClick);
   }
