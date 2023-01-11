@@ -8,15 +8,16 @@ class Item {
   constructor(
     todo,
     ind,
-    { handleTextClick, handleEditClick, handleSaveClick }
+    { handleTextClick, handleEditClick, handleSaveClick, handleDeleteClick }
   ) {
     this.todo = todo;
+    this.ind = ind;
 
     this.handleSaveClick = handleSaveClick;
 
     this.text = new ItemText(todo, ind, handleTextClick);
     this.edit = new ItemEditButton(ind, handleEditClick);
-    this.delete = new ItemDeleteButton(ind);
+    this.delete = new ItemDeleteButton(ind, handleDeleteClick);
     this.input = new ItemInput(todo.text, ind);
     this.save = new ItemSaveButton(ind, this._handleSaveClick);
   }

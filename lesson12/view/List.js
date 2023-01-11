@@ -23,7 +23,14 @@ class List {
     this.todos.toggleState(ind);
   };
 
-  handleEditClick = (event) => {
+  handleDeleteClick = (event) => {
+    const { dataset } = event.currentTarget;
+    const ind = Number(dataset.ind);
+
+    this.todos.delete(ind);
+  };
+
+  handleEditClick = (event, i) => {
     const { dataset } = event.currentTarget;
     const ind = Number(dataset.ind);
 
@@ -50,6 +57,7 @@ class List {
             handleTextClick: this.handleTextClick,
             handleEditClick: this.handleEditClick,
             handleSaveClick: this.handleSaveClick,
+            handleDeleteClick: this.handleDeleteClick,
           })
       )
       .reverse();
