@@ -3,11 +3,11 @@ class TodoItem {
   mode: "view" | "edit";
   isCompleted: boolean;
 
-  constructor(text: string) {
+  constructor(text: string, isCompleted = false) {
     this.text = text;
     // NOTE: view, edit
     this.mode = "view";
-    this.isCompleted = false;
+    this.isCompleted = isCompleted;
   }
 }
 

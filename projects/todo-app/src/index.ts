@@ -7,6 +7,7 @@ const view = new View(todos);
 function handleLoad() {
   view?.onInit();
   todos.addRenderer(view.renderTodos);
+  todos.fetchAllTodos();
 }
 
 function handleUnload() {
