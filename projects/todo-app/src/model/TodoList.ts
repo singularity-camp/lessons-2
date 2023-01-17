@@ -1,5 +1,6 @@
 import TodoItem from "./TodoItem";
 import fetchAll from "../services/fetchAll";
+import postItem from "../services/postItem";
 
 class TodoList {
   list: TodoItem[];
@@ -10,11 +11,14 @@ class TodoList {
     this.render = null;
   }
 
-  add(text: string) {
-    const item = new TodoItem(text);
-    this.list.push(item);
-
-    this.#render();
+  async add(text: string) {
+    try {
+      await this.#createTodo(text);
+      await this.#getAllTodos();
+      this.#render();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   update(ind: number, newText: string) {
@@ -63,6 +67,14 @@ class TodoList {
           (serverTodo) => new TodoItem(serverTodo.text, serverTodo.done)
         );
       }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async #createTodo(text: string) {
+    try {
+      await postItem({ text });
     } catch (e) {
       console.error(e);
     }
