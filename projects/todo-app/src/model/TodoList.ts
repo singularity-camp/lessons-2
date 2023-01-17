@@ -32,10 +32,14 @@ class TodoList {
     }
   }
 
-  delete(ind: number) {
-    this.list.splice(ind, 1);
-
-    this.#render();
+  async delete(ind: number) {
+    try {
+      await this.#deleteTodo(this.list[ind].id);
+      await this.#getAllTodos();
+      this.#render();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   updateMode(ind: number, newMode: "view" | "edit") {
@@ -97,6 +101,14 @@ class TodoList {
   async #updateTodo(id: number, text?: string, done?: boolean) {
     try {
       await patchItem(id, { text, done });
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async #deleteTodo(id: number) {
+    try {
+      await deleteItem(id);
     } catch (e) {
       console.error(e);
     }
