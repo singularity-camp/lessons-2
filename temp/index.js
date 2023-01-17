@@ -1,19 +1,14 @@
 import TodoList from "./model/TodoList";
-import View from "./view/index";
-
+import View from "./view/";
 const todos = new TodoList();
 const view = new View(todos);
-
-async function handleLoad() {
-  view?.onInit();
-  todos.addRenderer(view.renderTodos);
-  await todos.onInit();
+function handleLoad() {
+    view?.onInit();
+    todos.addRenderer(view.renderTodos);
+    todos.fetchAllTodos();
 }
-
 function handleUnload() {
-  view?.onDestroy();
+    view?.onDestroy();
 }
-
 window.addEventListener("load", handleLoad);
-
 window.addEventListener("unload", handleUnload);

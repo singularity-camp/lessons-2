@@ -1,5 +1,5 @@
 import TodoItem from "./TodoItem";
-import { ServerTodo } from "./ServerTodos";
+import fetchAll from "../services/fetchAll";
 
 class TodoList {
   list: TodoItem[];
@@ -45,27 +45,27 @@ class TodoList {
     this.render = render;
   }
 
-  async fetchAllTodos() {
-    try {
-      const res = await fetch("https://localhost:4001/todo");
-      if (!res.ok) {
-        await Promise.reject(new Error(`fail response: ${res.statusText}`));
-      }
-      const json: ServerTodo[] = await res.json();
-
-      this.list = json.map(
-        (serverTodo) => new TodoItem(serverTodo.text, serverTodo.done)
-      );
-
-      this.#render();
-    } catch (e) {
-      console.error(e);
-    }
+  async onInit() {
+    await this.#getAllTodos();
+    this.#render();
   }
 
   // Private method
   #render() {
     this.render?.(this.list);
+  }
+
+  async #getAllTodos() {
+    try {
+      const remoteTodos = await fetchAll();
+      if (remoteTodos) {
+        this.list = remoteTodos.map(
+          (serverTodo) => new TodoItem(serverTodo.text, serverTodo.done)
+        );
+      }
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
 
