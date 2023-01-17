@@ -1,6 +1,7 @@
 import TodoItem from "./TodoItem";
 import fetchAll from "../services/fetchAll";
 import postItem from "../services/postItem";
+import patchItem from "../services/patchItem";
 
 class TodoList {
   list: TodoItem[];
@@ -21,10 +22,14 @@ class TodoList {
     }
   }
 
-  update(ind: number, newText: string) {
-    this.list[ind] = new TodoItem(newText);
-
-    this.#render();
+  async update(ind: number, newText: string) {
+    try {
+      await this.#updateTodo(this.list[ind].id, newText);
+      await this.#getAllTodos();
+      this.#render();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   delete(ind: number) {
@@ -39,10 +44,18 @@ class TodoList {
     this.#render();
   }
 
-  toggleState(ind: number) {
-    this.list[ind].isCompleted = !this.list[ind].isCompleted;
-
-    this.#render();
+  async toggleState(ind: number) {
+    try {
+      await this.#updateTodo(
+        this.list[ind].id,
+        undefined,
+        !this.list[ind].isCompleted
+      );
+      await this.#getAllTodos();
+      this.#render();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   addRenderer(render: (list: TodoItem[]) => void) {
@@ -64,7 +77,8 @@ class TodoList {
       const remoteTodos = await fetchAll();
       if (remoteTodos) {
         this.list = remoteTodos.map(
-          (serverTodo) => new TodoItem(serverTodo.text, serverTodo.done)
+          (serverTodo) =>
+            new TodoItem(serverTodo.id, serverTodo.text, serverTodo.done)
         );
       }
     } catch (e) {
@@ -75,6 +89,14 @@ class TodoList {
   async #createTodo(text: string) {
     try {
       await postItem({ text });
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async #updateTodo(id: number, text?: string, done?: boolean) {
+    try {
+      await patchItem(id, { text, done });
     } catch (e) {
       console.error(e);
     }
