@@ -7,11 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
     "ttsc": "ttsc",
+    "tsc:todo-app": "npm run ttsc -- --project ./projects/todo-app/tsconfig.json",
     "ts-node": "ts-node",
     "serve:lesson11": "http-server ./lesson11/",
     "serve:lesson12": "http-server ./lesson12/",
     "serve:lesson13": "http-server ./lesson13/",
-    "serve:todo-app": "http-server --proxy http://localhost:4001? ./projects/todo-app/"
+    "serve:todo-app": "http-server --proxy http://localhost:4001 ./projects/todo-app/"
   },
   "repository": {
     "type": "git",
