@@ -25,7 +25,6 @@ class Header {
   }
 
   handleAddClick = () => {
-    debugger;
     const inputValue = this.input.getValue();
 
     this.todos.add(inputValue || "");
