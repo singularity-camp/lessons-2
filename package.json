@@ -7,14 +7,20 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
     "ttsc": "ttsc",
-    "tsc:todo-app": "npm run ttsc -- --project ./projects/todo-app/tsconfig.json",
     "ts-node": "ts-node",
+    "tailwind": "tailwind",
+    "tsc:todo-app": "npm run ttsc -- --project ./projects/todo-app/tsconfig.json",
+    "tsc:tic-tac-toe": "npm run ttsc -- --project ./projects/tic-tac-toe/tsconfig.json",
+    "tailwind:tic-tac-toe": "tailwindcss --content ./projects/tic-tac-toe/**/*.{html,js,ts} -i ./projects/tic-tac-toe/src/index.css -o ./projects/tic-tac-toe/dist/index.css",
+    "clean:tic-tac-toe": "rimraf ./projects/tic-tac-toe/dist",
+    "build:tic-tac-toe": "npm run clean:tic-tac-toe && npm run tsc:tic-tac-toe && npm run tailwind:tic-tac-toe",
     "serve:lesson11": "http-server ./lesson11/",
     "serve:lesson12": "http-server ./lesson12/",
     "serve:lesson13": "http-server ./lesson13/",
     "serve:lesson16": "http-server ./lesson16/",
     "serve:lesson18": "http-server ./lesson18/",
-    "serve:todo-app": "http-server --proxy http://localhost:4001 ./projects/todo-app/"
+    "serve:todo-app": "http-server --proxy http://localhost:4001 ./projects/todo-app/",
+    "serve:tic-tac-toe": "http-server -c-1 ./projects/tic-tac-toe/"
   },
   "repository": {
     "type": "git",
@@ -27,12 +33,15 @@
   },
   "homepage": "https://github.com/singularity-camp/lessons-2#readme",
   "dependencies": {
+    "daisyui": "^2.47.0",
     "http-server": "^14.1.1",
     "prettier": "^2.7.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@zoltu/typescript-transformer-append-js-extension": "^1.0.1",
+    "rimraf": "^4.1.1",
+    "tailwindcss": "^3.2.4",
     "ts-node": "^10.9.1",
     "ttypescript": "^1.5.15",
     "typescript": "^4.9.4"
