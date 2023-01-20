@@ -8,3 +8,5 @@ async function deleteItem(id: number) {
     console.error(e);
   }
 }
+
+export default deleteItem;

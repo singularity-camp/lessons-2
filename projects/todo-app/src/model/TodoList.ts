@@ -2,6 +2,7 @@ import TodoItem from "./TodoItem";
 import fetchAll from "../services/fetchAll";
 import postItem from "../services/postItem";
 import patchItem from "../services/patchItem";
+import deleteItem from "../services/deleteItem";
 
 class TodoList {
   list: TodoItem[];
