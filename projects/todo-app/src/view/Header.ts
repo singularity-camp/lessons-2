@@ -1,27 +1,37 @@
-class Input {
-  el: null | HTMLInputElement;
+import Input from "./Input";
+import AddButton from "./AddButton";
+import TodoList from "../model/TodoList";
 
-  constructor() {
-    this.el = null;
+class Header {
+  todos: TodoList;
+  input: Input;
+  addButton: AddButton;
+
+  constructor(todos: TodoList) {
+    this.todos = todos;
+
+    this.input = new Input();
+    this.addButton = new AddButton(this.handleAddClick);
   }
 
   onInit() {
-    this.el = document.getElementById("input") as HTMLInputElement;
+    this.input?.onInit();
+    this.addButton?.onInit();
   }
 
   onDestroy() {
-    this.el = null;
+    this.input?.onDestroy();
+    this.addButton?.onDestroy();
   }
 
-  getValue() {
-    return this.el?.value;
-  }
+  handleAddClick = () => {
+    debugger;
+    const inputValue = this.input.getValue();
 
-  setValue() {
-    if (this.el?.value) {
-      this.el.value = "";
-    }
-  }
+    this.todos.add(inputValue || "");
+
+    this.input.removeValue();
+  };
 }
 
-export default Input;
+export default Header;

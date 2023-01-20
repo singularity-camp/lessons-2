@@ -17,7 +17,7 @@ class Input {
     return this.el?.value;
   }
 
-  setValue() {
+  removeValue() {
     if (this.el?.value) {
       this.el.value = "";
     }

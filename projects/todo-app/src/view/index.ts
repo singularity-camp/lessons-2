@@ -8,7 +8,7 @@ class Main {
   list: List;
 
   constructor(todos: TodoList) {
-    this.header = new Header();
+    this.header = new Header(todos);
     this.list = new List(todos);
   }
 
