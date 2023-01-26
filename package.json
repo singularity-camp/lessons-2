@@ -12,6 +12,7 @@
     "serve:lesson11": "http-server ./lesson11/",
     "serve:lesson12": "http-server ./lesson12/",
     "serve:lesson13": "http-server ./lesson13/",
+    "serve:lesson16": "http-server ./lesson16/",
     "serve:todo-app": "http-server --proxy http://localhost:4001 ./projects/todo-app/"
   },
   "repository": {

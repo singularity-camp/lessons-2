@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="./index.js" type="module"></script>
+    <title>Validation</title>
+</head>
+<body>
+<div>
+    <form id="form">
+        <input pattern="^[A-Z][a-z]*\s\d+$" type="text">
+        <img alt="wallpaper"
+             src="http://www.wallpapers13.com/wp-content/uploads/2018/11/The-Magic-Islands-of-Lofoten-Norway-Europe-winter-morning-light-landscape-Desktop-HD-Wallpaper-For-PC-Tablet-And-Mobile-3840x2160-1920x14409.jpg">
+        <h2>Whole list is done?</h2>
+        <input id="list-checkbox" name="" type="checkbox">
+        <input id="" max="10" min="2" name="" required type="number">
+        <ul id="list">
+            <li><input class="checkbox-item" id="list-checkbox-1" name="" type="checkbox">1</li>
+            <li><input class="checkbox-item" id="list-checkbox-2" name="" type="checkbox">2</li>
+            <li><input class="checkbox-item" id="list-checkbox-3" name="" type="checkbox">3</li>
+        </ul>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
