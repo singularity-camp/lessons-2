@@ -12,6 +12,10 @@ class Tournament {
     this.#numRoundsPerGame = numRoundsPerGame;
   }
 
+  get players() {
+    return this.#players;
+  }
+
   async start() {
     this.#init();
     await this.#run();

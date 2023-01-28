@@ -11,6 +11,14 @@ class Player {
     this.#piece = null;
   }
 
+  get name() {
+    return this.#name;
+  }
+
+  get avatarUrl() {
+    return this.#avatarUrl;
+  }
+
   get piece() {
     if (!this.#piece) {
       return 0;

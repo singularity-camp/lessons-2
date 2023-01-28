@@ -20,7 +20,8 @@
     "serve:lesson16": "http-server ./lesson16/",
     "serve:lesson18": "http-server ./lesson18/",
     "serve:todo-app": "http-server --proxy http://localhost:4001 ./projects/todo-app/",
-    "serve:tic-tac-toe": "http-server -c-1 ./projects/tic-tac-toe/"
+    "serve:tic-tac-toe": "http-server -c-1 ./projects/tic-tac-toe/",
+    "start:tic-tac-toe": "npm run build:tic-tac-toe && npm run serve:tic-tac-toe"
   },
   "repository": {
     "type": "git",
