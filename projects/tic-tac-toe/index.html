@@ -9,18 +9,18 @@
 </head>
 <body>
 <div class="hidden flex justify-center" id="page-tournament-intro">
-    <article class="card card-bordered w-1/2 bg-base-100 shadow-xl mt-14">
-        <main class="card-body">
+    <section class="hero border border-base-100 rounded-md w-1/2 bg-base-100 shadow-xl mt-14">
+        <article class="hero-content flex-col">
             <header class="text-2xl font-bold">
                 <h1>Welcome to Tic Tac Toe tournament!</h1>
             </header>
-            <h2 class="card-title">Our players</h2>
-            <ul class="players" id="players-list"></ul>
-            <div class="card-actions justify-end">
-                <button class="btn btn-primary" id="btn-start">Start tournament</button>
-            </div>
-        </main>
-    </article>
+            <main class="flex flex-col">
+                <h2 class="text-xl font-bold mt-3">Our players</h2>
+                <ul class="players mt-3" id="players-list"></ul>
+                <button class="btn btn-primary self-end mt-3" id="btn-start">Start tournament</button>
+            </main>
+        </article>
+    </section>
 </div>
 </body>
 </html>
