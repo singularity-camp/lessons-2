@@ -39,7 +39,6 @@ class Tournament {
   }
 
   async #runGames() {
-    console.log("#runGames", this.#games);
     for (let i = 0; i < this.#games.length; i++) {
       const game = this.#games[i];
       await this.#view.pageGameIntro.render(i + 1, game);
