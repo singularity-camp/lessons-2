@@ -1,39 +1,48 @@
 import Player from "./Player";
 import Game from "./Game";
+import View from "../view";
 
 class Tournament {
+  readonly #view: View;
   readonly #players: Player[];
   readonly #games: Game[];
   readonly #numRoundsPerGame: number;
 
-  constructor(players: Player[], numRoundsPerGame: number) {
+  constructor(view: View, players: Player[], numRoundsPerGame: number) {
+    this.#view = view;
     this.#players = players;
     this.#games = [];
     this.#numRoundsPerGame = numRoundsPerGame;
   }
 
-  get players() {
-    return this.#players;
-  }
-
   async start() {
-    this.#init();
-    await this.#run();
+    await this.#view.pageTournamentIntro.render(this.#players);
+
+    this.#initGames();
+    await this.#runGames();
   }
 
-  #init() {
+  #initGames() {
     for (let i = 0; i < this.#players.length; i++) {
       const player1 = this.#players[i];
       for (let j = i + 1; j < this.#players.length; j++) {
         const player2 = this.#players[j];
-        const game = new Game(player1, player2, this.#numRoundsPerGame);
+        const game = new Game(
+          this.#view,
+          player1,
+          player2,
+          this.#numRoundsPerGame
+        );
         this.#games.push(game);
       }
     }
   }
 
-  async #run() {
-    for (const game of this.#games) {
+  async #runGames() {
+    console.log("#runGames", this.#games);
+    for (let i = 0; i < this.#games.length; i++) {
+      const game = this.#games[i];
+      await this.#view.pageGameIntro.render(i + 1, game);
       await game.start();
     }
   }

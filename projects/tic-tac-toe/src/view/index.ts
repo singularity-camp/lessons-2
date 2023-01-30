@@ -1,41 +1,24 @@
-import Page from "./pages/index";
 import TournamentIntro from "./pages/TournamentIntro/index";
+import GameIntro from "./pages/GameIntro/index";
 import { Component } from "./types";
-import Tournament from "../model/Tournament";
 
 class View implements Component {
-  readonly #pageTournamentIntro: TournamentIntro;
-  #activePage: null | Page;
+  readonly pageTournamentIntro: TournamentIntro;
+  readonly pageGameIntro: GameIntro;
 
-  constructor(tournament: Tournament) {
-    this.#pageTournamentIntro = new TournamentIntro(tournament);
-
-    this.#activePage = null;
+  constructor() {
+    this.pageTournamentIntro = new TournamentIntro();
+    this.pageGameIntro = new GameIntro();
   }
 
   onInit() {
-    this.#pageTournamentIntro.onInit();
-
-    this.#setActivePage(this.#pageTournamentIntro);
+    this.pageTournamentIntro.onInit();
+    this.pageGameIntro.onInit();
   }
 
   onDestroy() {
-    this.#pageTournamentIntro.onDestroy();
-
-    this.#setActivePage(null);
-  }
-
-  #setActivePage(page: null | Page) {
-    if (this.#activePage) {
-      this.#activePage.hide();
-    }
-
-    this.#activePage = page;
-
-    if (this.#activePage) {
-      this.#activePage.show();
-      this.#activePage.render();
-    }
+    this.pageTournamentIntro.onDestroy();
+    this.pageGameIntro.onDestroy();
   }
 }
 

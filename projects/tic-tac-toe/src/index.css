@@ -9,4 +9,26 @@
         grid-template-rows: repeat(auto-fill, 1fr);
         column-gap: 20px;
     }
+
+    svg.circular-progress {
+        @apply -rotate-90
+    }
+
+    svg.circular-progress circle {
+        @apply stroke-base-content fill-none;
+        --duration: 1000ms;
+        stroke-linecap: round;
+        stroke-dasharray: 500 500;
+        stroke-dashoffset: 500;
+        animation: progress var(--duration) ease-in-out forwards;
+    }
+
+    @keyframes progress {
+        from {
+            stroke-dashoffset: 500;
+        }
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
 }

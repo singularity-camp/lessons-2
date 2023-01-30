@@ -1,29 +1,44 @@
 import Page from "../index";
-import { Component, Hideable, Renderable } from "../../types";
+import { Component, Hideable } from "../../types";
 import PlayersList from "./PlayersList";
-import Tournament from "../../../model/Tournament";
+import StartTournamentButton from "./StartTournamentButton";
+import Player from "../../../model/Player";
 
-class TournamentIntro extends Page implements Hideable, Component, Renderable {
+class TournamentIntro extends Page implements Hideable, Component {
   readonly #playersList: PlayersList;
+  readonly #startTournamentButton: StartTournamentButton;
 
-  constructor(tournament: Tournament) {
+  constructor() {
     super();
-    this.#playersList = new PlayersList(tournament);
+    this.#playersList = new PlayersList();
+    this.#startTournamentButton = new StartTournamentButton();
   }
 
   onInit() {
     this.el = document.getElementById(
       "page-tournament-intro"
     ) as HTMLDivElement;
+
+    this.#startTournamentButton.onInit();
     this.#playersList.onInit();
   }
 
   onDestroy() {
     this.el = null;
+
+    this.#startTournamentButton.onDestroy();
+    this.#playersList.onDestroy();
   }
 
-  render() {
-    this.#playersList.render();
+  async render(players: Player[]) {
+    this.show();
+    this.#playersList.render(players);
+    await this.#onStartClick();
+    this.hide();
+  }
+
+  #onStartClick() {
+    return new Promise((res) => this.#startTournamentButton.onClick(res));
   }
 }
 

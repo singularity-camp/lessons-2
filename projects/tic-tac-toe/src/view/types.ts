@@ -11,7 +11,3 @@ export interface Hideable {
 
   hide(): void;
 }
-
-export interface Renderable {
-  render(): void;
-}

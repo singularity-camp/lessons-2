@@ -12,10 +12,6 @@ class Page {
   hide() {
     this.el?.classList.add("hidden");
   }
-
-  render() {
-    
-  }
 }
 
 export default Page;

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Todo list</title>
-    <link href="/assets/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Tic-tac-toe</title>
+    <link href="./assets/favicon.ico" rel="icon" type="image/x-icon">
     <script async src="./dist/index.js" type="module"></script>
     <link href="./dist/index.css" rel="stylesheet">
 </head>
@@ -17,7 +17,29 @@
             <main class="flex flex-col">
                 <h2 class="text-xl font-bold mt-3">Our players</h2>
                 <ul class="players mt-3" id="players-list"></ul>
-                <button class="btn btn-primary self-end mt-3" id="btn-start">Start tournament</button>
+                <button class="btn btn-primary self-end mt-3" id="btn-start-tournament">Start tournament</button>
+            </main>
+        </article>
+    </section>
+</div>
+
+<div class="hidden flex justify-center" id="page-game-intro">
+    <section class="hero border border-base-100 rounded-md w-1/2 bg-base-100 shadow-xl mt-14">
+        <article class="hero-content flex-col">
+            <div class="w-6 ml-auto">
+                <svg class="circular-progress" viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" id="circle-progress" r="55" stroke-width="10"/>
+                </svg>
+            </div>
+            <header class="text-2xl font-bold">
+                <h1>Game #<em id="game-number"></em></h1>
+            </header>
+            <main class="flex flex-col">
+                <ul class="flex w-full mt-3">
+                    <li class="card card-compact" id="player1-card"></li>
+                    <div class="divider divider-horizontal w-max mx-3 text-3xl">VS</div>
+                    <li class="card card-compact" id="player2-card"></li>
+                </ul>
             </main>
         </article>
     </section>

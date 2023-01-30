@@ -1,13 +1,11 @@
-import { Component, Renderable } from "../../types";
-import Tournament from "../../../model/Tournament";
+import { Component } from "../../types";
+import Player from "../../../model/Player";
 
-class PlayersList implements Component, Renderable {
+class PlayersList implements Component {
   #el: null | HTMLUListElement;
-  readonly #tournament: Tournament;
 
-  constructor(tournament: Tournament) {
+  constructor() {
     this.#el = null;
-    this.#tournament = tournament;
   }
 
   onInit() {
@@ -18,9 +16,9 @@ class PlayersList implements Component, Renderable {
     this.#el = null;
   }
 
-  render() {
+  render(players: Player[]) {
     const children = [];
-    for (const player of this.#tournament.players) {
+    for (const player of players) {
       children.push(this.#renderPlayer(player.name, player.avatarUrl));
     }
 

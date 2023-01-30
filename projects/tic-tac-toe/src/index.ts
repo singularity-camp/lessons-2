@@ -5,11 +5,12 @@ import User from "./model/User";
 const user1 = new User("user1", "/assets/gryffindor.webp");
 const user2 = new User("user2", "/assets/hufflepuff.webp");
 
-const tournament = new Tournament([user1, user2], 1);
-const view = new View(tournament);
+const view = new View();
+const tournament = new Tournament(view, [user1, user2], 1);
 
 async function handleLoad() {
   view.onInit();
+  await tournament.start();
 }
 
 function handleUnload() {
