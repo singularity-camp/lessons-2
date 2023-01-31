@@ -9,7 +9,9 @@
         grid-template-rows: repeat(auto-fill, 1fr);
         column-gap: 20px;
     }
+}
 
+@layer components {
     svg.circular-progress {
         @apply -rotate-90
     }
@@ -30,5 +32,14 @@
         to {
             stroke-dashoffset: 0;
         }
+    }
+}
+
+@layer components {
+    .playarea {
+        display: grid;
+        grid-template-columns: repeat(3, calc(95% / 3));
+        justify-content: space-between;
+        align-content: space-between;
     }
 }

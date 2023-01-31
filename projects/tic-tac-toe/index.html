@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>Tic-tac-toe</title>
     <link href="./assets/favicon.ico" rel="icon" type="image/x-icon">
-    <script async src="./dist/index.js" type="module"></script>
+    <!--    <script async src="./dist/index.js" type="module"></script>-->
     <link href="./dist/index.css" rel="stylesheet">
 </head>
 <body>
 <div class="hidden flex justify-center" id="page-tournament-intro">
     <section class="hero border border-base-100 rounded-md w-1/2 bg-base-100 shadow-xl mt-14">
         <article class="hero-content flex-col">
-            <header class="text-2xl font-bold">
-                <h1>Welcome to Tic Tac Toe tournament!</h1>
+            <header>
+                <h1 class="text-2xl font-bold">Welcome to Tic Tac Toe tournament!</h1>
             </header>
             <main class="flex flex-col">
                 <h2 class="text-xl font-bold mt-3">Our players</h2>
@@ -31,14 +31,37 @@
                     <circle cx="60" cy="60" id="circle-progress" r="55" stroke-width="10"/>
                 </svg>
             </div>
-            <header class="text-2xl font-bold">
-                <h1>Game #<em id="game-number"></em></h1>
+            <header>
+                <h1 class="text-2xl font-bold">Game #<em id="game-number"></em></h1>
             </header>
             <main class="flex flex-col">
                 <ul class="flex w-full mt-3">
                     <li class="card card-compact" id="player1-card"></li>
                     <div class="divider divider-horizontal w-max mx-3 text-3xl">VS</div>
                     <li class="card card-compact" id="player2-card"></li>
+                </ul>
+            </main>
+        </article>
+    </section>
+</div>
+
+<div class="flex justify-center" id="page-playboard">
+    <section class="hero border border-base-100 rounded-md w-1/2 bg-base-100 shadow-xl mt-14">
+        <article class="hero-content w-full flex-col">
+            <header>
+                <!--                <h1>Game #<em id="game-number"></em></h1>-->
+            </header>
+            <main class="w-full flex flex-col items-center mt-3">
+                <ul class="playarea w-7/12 aspect-square">
+                    <li class="aspect-square rounded-2xl bg-info">1</li>
+                    <li class="aspect-square rounded-2xl bg-info">2</li>
+                    <li class="aspect-square rounded-2xl bg-info">3</li>
+                    <li class="aspect-square rounded-2xl bg-info">4</li>
+                    <li class="aspect-square rounded-2xl bg-info">5</li>
+                    <li class="aspect-square rounded-2xl bg-info">6</li>
+                    <li class="aspect-square rounded-2xl bg-info">7</li>
+                    <li class="aspect-square rounded-2xl bg-info">8</li>
+                    <li class="aspect-square rounded-2xl bg-info">9</li>
                 </ul>
             </main>
         </article>

@@ -1,11 +1,13 @@
 import { PIECE } from "./types";
 import Player from "./Player";
 import Bot from "./Bot";
+import View from "../view";
 
 const ROW = 3;
 const COL = 3;
 
 class Round {
+  readonly #view: View;
   readonly #player1: Player;
   readonly #player2: Player;
   #currentPlayer: Player;
@@ -13,7 +15,13 @@ class Round {
   readonly #end: boolean;
   readonly #board: PIECE[];
 
-  constructor(player1: Player, player2: Player, isFirtPlayerStarts: boolean) {
+  constructor(
+    view: View,
+    player1: Player,
+    player2: Player,
+    isFirtPlayerStarts: boolean
+  ) {
+    this.#view = view;
     this.#player1 = player1;
     this.#player2 = player2;
     this.#currentPlayer = isFirtPlayerStarts ? this.#player1 : this.#player2;
@@ -31,10 +39,12 @@ class Round {
   }
 
   async #run() {
-    while (!this.#end) {
-      await this.#playerMove();
-      this.#togglePlayer();
-    }
+    return new Promise(async (res) => {
+      while (!this.#end) {
+        await this.#playerMove();
+        this.#togglePlayer();
+      }
+    });
   }
 
   #playerMove() {

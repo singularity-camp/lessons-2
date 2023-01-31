@@ -29,7 +29,12 @@ class Game {
       [this.player1.piece, this.player2.piece] =
         Math.floor(i / 2) % 2 === 0 ? [1, -1] : [-1, 1];
 
-      const round = new Round(this.player1, this.player2, i % 2 === 0);
+      const round = new Round(
+        this.#view,
+        this.player1,
+        this.player2,
+        i % 2 === 0
+      );
 
       this.#rounds.push(round);
     }
