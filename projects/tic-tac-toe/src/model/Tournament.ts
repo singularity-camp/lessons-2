@@ -41,8 +41,7 @@ class Tournament {
   async #runGames() {
     for (let i = 0; i < this.#games.length; i++) {
       const game = this.#games[i];
-      await this.#view.pageGameIntro.render(i + 1, game);
-      await game.start();
+      await game.start(i);
     }
   }
 }

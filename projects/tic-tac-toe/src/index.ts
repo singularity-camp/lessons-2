@@ -6,7 +6,7 @@ const user1 = new User("user1", "/assets/gryffindor.webp");
 const user2 = new User("user2", "/assets/hufflepuff.webp");
 
 const view = new View();
-const tournament = new Tournament(view, [user1, user2], 1);
+const tournament = new Tournament(view, [user1, user2], 3);
 
 async function handleLoad() {
   view.onInit();

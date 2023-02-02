@@ -1,6 +1,7 @@
 import Player from "./Player";
 import Round from "./Round";
 import View from "../view";
+import { PIECE } from "./types";
 
 class Game {
   readonly player1: Player;
@@ -19,21 +20,26 @@ class Game {
     this.#rounds = [];
   }
 
-  async start() {
+  async start(ind: number) {
+    await this.#view.pageGameIntro.render(ind + 1, this);
+
     this.#init();
     await this.#run();
   }
 
   #init() {
     for (let i = 0; i < this.#numRounds; i++) {
-      [this.player1.piece, this.player2.piece] =
+      const [player1Piece, player2Piece]: [PIECE, PIECE] =
         Math.floor(i / 2) % 2 === 0 ? [1, -1] : [-1, 1];
 
       const round = new Round(
         this.#view,
         this.player1,
         this.player2,
-        i % 2 === 0
+        player1Piece,
+        player2Piece,
+        i % 2 === 0,
+        this.#score
       );
 
       this.#rounds.push(round);
