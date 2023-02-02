@@ -2,6 +2,7 @@ import { PIECE } from "./types";
 import Player from "./Player";
 import Bot from "./Bot";
 import View from "../view";
+import wait from "../utils/wait";
 
 const ROW = 3;
 const COL = 3;
@@ -73,7 +74,9 @@ class Round {
 
   async #playerMove() {
     if (this.currentPlayer instanceof Bot) {
-      return this.currentPlayer.move(this.board);
+      const ind = this.currentPlayer.move(this.board);
+      await wait(500);
+      return ind;
     }
 
     return this.#view.pagePlayboard.onEmptyCellClick();
@@ -120,11 +123,13 @@ class Round {
       this.#assess(piece, ROW - 1, COL, ROW - 1);
     if (win) {
       this.#winner = this.currentPlayer;
+      return;
     }
 
     const draw = !new Set(this.board).has(0);
     if (draw) {
       this.#winner = null;
+      return;
     }
   }
 
@@ -132,7 +137,7 @@ class Round {
     let i = firstInd;
 
     for (let counter = 0; counter < total; counter++) {
-      if (piece !== this.board[i]) {
+      if (this.board[i] !== piece) {
         return false;
       }
       i += step;

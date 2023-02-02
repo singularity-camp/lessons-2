@@ -20,6 +20,8 @@ class Tournament {
 
     this.#initGames();
     await this.#runGames();
+
+    await this.#view.pageTournamentResult.render();
   }
 
   #initGames() {

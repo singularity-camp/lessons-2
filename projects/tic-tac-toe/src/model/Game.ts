@@ -20,11 +20,17 @@ class Game {
     this.#rounds = [];
   }
 
+  get score() {
+    return this.#score;
+  }
+
   async start(ind: number) {
     await this.#view.pageGameIntro.render(ind + 1, this);
 
     this.#init();
     await this.#run();
+
+    await this.#view.pageGameResult.render(ind + 1, this);
   }
 
   #init() {

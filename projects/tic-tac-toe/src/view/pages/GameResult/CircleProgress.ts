@@ -11,7 +11,7 @@ class CircleProgress implements Component {
 
   onInit() {
     this.#el = document.getElementById(
-      "circle-progress-intro"
+      "circle-progress-result"
     ) as unknown as SVGCircleElement;
   }
 

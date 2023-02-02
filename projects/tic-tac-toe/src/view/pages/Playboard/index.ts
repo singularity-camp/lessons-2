@@ -38,7 +38,7 @@ class Playboard extends Page implements Hideable, Component {
     this.show();
     this.#player1Info.render(round.player1, round.player1Piece, round.score[0]);
     this.#player2Info.render(round.player2, round.player2Piece, round.score[1]);
-    this.#playarea.render(round.board, round.currentPlayer);
+    this.#playarea.render(round.board);
     this.renderCurrentPlayer(round.currentPlayer, round.getCurrentPiece());
 
     await round.run();

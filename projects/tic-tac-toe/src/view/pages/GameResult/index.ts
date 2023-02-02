@@ -2,10 +2,10 @@ import Page from "../index";
 import { Component, Hideable } from "../../types";
 import PlayerCard from "./PlayerCard";
 import GameNumber from "./GameNumber";
-import Game from "../../../model/Game";
 import CircleProgress from "./CircleProgress";
+import Game from "../../../model/Game";
 
-class GameIntro extends Page implements Hideable, Component {
+class GameResult extends Page implements Hideable, Component {
   readonly #player1Card: PlayerCard;
   readonly #player2Card: PlayerCard;
   readonly #gameNumber: GameNumber;
@@ -13,14 +13,14 @@ class GameIntro extends Page implements Hideable, Component {
 
   constructor() {
     super();
-    this.#player1Card = new PlayerCard("player1-card-intro");
-    this.#player2Card = new PlayerCard("player2-card-intro");
+    this.#player1Card = new PlayerCard("player1-card-result");
+    this.#player2Card = new PlayerCard("player2-card-result");
     this.#gameNumber = new GameNumber();
     this.#circleProgress = new CircleProgress();
   }
 
   onInit() {
-    this.el = document.getElementById("page-game-intro") as HTMLDivElement;
+    this.el = document.getElementById("page-game-result") as HTMLDivElement;
 
     this.#player1Card.onInit();
     this.#player2Card.onInit();
@@ -40,8 +40,8 @@ class GameIntro extends Page implements Hideable, Component {
   async render(gameNumber: number, game: Game) {
     this.show();
     this.#gameNumber.render(gameNumber);
-    this.#player1Card.render(game.player1);
-    this.#player2Card.render(game.player2);
+    this.#player1Card.render(game.player1, game.score[0]);
+    this.#player2Card.render(game.player2, game.score[1]);
     await this.#onProgressEnd();
     this.hide();
   }
@@ -51,4 +51,4 @@ class GameIntro extends Page implements Hideable, Component {
   }
 }
 
-export default GameIntro;
+export default GameResult;
