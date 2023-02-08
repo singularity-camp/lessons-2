@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import Counter from "@/components/Counter";
+import Display from "@/components/Display";
 
 export default function Home() {
   const [number, setNumber] = useState(0);
@@ -14,23 +16,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <span className={styles.number}>{number}</span>
-        <button
-          className={styles.button}
-          onClick={() => {
-            setNumber((prevNumber) => prevNumber + 1);
-          }}
-        >
-          +
-        </button>
-        <button
-          className={styles.button}
-          onClick={() => {
-            setNumber((prevNumber) => prevNumber - 1);
-          }}
-        >
-          -
-        </button>
+        <Display number={number} />
+        <Counter setNumber={setNumber} />
       </main>
     </>
   );
