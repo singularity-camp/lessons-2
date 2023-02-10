@@ -1,12 +1,32 @@
 import View from "./view/index";
 import Tournament from "./model/Tournament";
-import User from "./model/User";
+import SlytherinBot from "./model/SlytherinBot";
+import GryffindorBot from "./model/GryffindorBot";
+import GryffindorBot2 from "./model/GryffindorBot2";
+import RavenclawBot from "./model/RavenclawBot";
+import HufflepuffBot from "./model/HufflepuffBot";
 
-const user1 = new User("user1", "/assets/gryffindor.webp");
-const user2 = new User("user2", "/assets/hufflepuff.webp");
+const slytherinBot = new SlytherinBot();
+const gryffindorBot = new GryffindorBot(
+  "Gryffindor",
+  "/assets/gryffindor.webp"
+);
+const gryffindorBot2 = new GryffindorBot2(
+  "Gryffindor2",
+  "/assets/gryffindor.webp"
+);
+const ravenclawBot = new RavenclawBot("Ravenclaw", "/assets/ravenclaw.webp");
+const hufflepuffBot = new HufflepuffBot(
+  "Hufflepuff",
+  "/assets/hufflepuff.webp"
+);
 
 const view = new View();
-const tournament = new Tournament(view, [user1, user2], 3);
+const tournament = new Tournament(
+  view,
+  [slytherinBot, gryffindorBot, gryffindorBot2, ravenclawBot, hufflepuffBot],
+  4
+);
 
 async function handleLoad() {
   view.onInit();
