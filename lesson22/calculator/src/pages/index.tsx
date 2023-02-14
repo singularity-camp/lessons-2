@@ -3,14 +3,16 @@ import styles from "@/styles/Home.module.css";
 import Display from "@/components/Display/Display";
 import Buttons from "@/components/Buttons/Buttons";
 import { useState } from "react";
+import { Operator, Equal } from "@/types";
 
 export default function Home() {
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState("");
-  const [operator, setOperator] = useState("");
+  const [operator, setOperator] = useState<Operator | "">("");
 
-  console.log(value1);
-  console.log(value2);
+  console.log("value1", value1);
+  console.log("operator", operator);
+  console.log("value2", value2);
 
   const handleNumClick = (value: string) => {
     if (operator) {
@@ -19,6 +21,14 @@ export default function Home() {
     }
     setValue1((prevValue1) => `${prevValue1}${value}`);
   };
+
+  const handleOperatorClick = (operator: Operator | Equal) => {
+    if (operator === "=") {
+      return;
+    }
+    setOperator(operator);
+  };
+
   return (
     <>
       <Head>
@@ -29,7 +39,10 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Display value="-4" />
-        <Buttons handleNumClick={handleNumClick} />
+        <Buttons
+          handleNumClick={handleNumClick}
+          handleOperatorClick={handleOperatorClick}
+        />
       </main>
     </>
   );
