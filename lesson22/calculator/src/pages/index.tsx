@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import Display from "@/components/Display/Display"
+import Buttons from "@/components/Buttons/Buttons";
 
 export default function Home() {
   return (
@@ -12,7 +13,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Display number={4}/>
+        <Display number={-4}/>
+        <Buttons/>
       </main>
     </>
   )
