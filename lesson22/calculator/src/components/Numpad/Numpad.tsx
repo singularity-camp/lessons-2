@@ -4,7 +4,7 @@ function Numpad() {
   return (
     <div>
       {numbers.map((value) => (
-        <button>{value}</button>
+        <button key={value}>{value}</button>
       ))}
     </div>
   );
