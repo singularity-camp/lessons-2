@@ -1,9 +1,24 @@
-import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
-import Display from "@/components/Display/Display"
+import Head from "next/head";
+import styles from "@/styles/Home.module.css";
+import Display from "@/components/Display/Display";
 import Buttons from "@/components/Buttons/Buttons";
+import { useState } from "react";
 
 export default function Home() {
+  const [value1, setValue1] = useState("");
+  const [value2, setValue2] = useState("");
+  const [operator, setOperator] = useState("");
+
+  console.log(value1);
+  console.log(value2);
+
+  const handleNumClick = (value: string) => {
+    if (operator) {
+      setValue2((prevValue2) => `${prevValue2}${value}`);
+      return;
+    }
+    setValue1((prevValue1) => `${prevValue1}${value}`);
+  };
   return (
     <>
       <Head>
@@ -13,9 +28,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Display number={-4}/>
-        <Buttons/>
+        <Display value="-4" />
+        <Buttons handleNumClick={handleNumClick} />
       </main>
     </>
-  )
+  );
 }

@@ -1,9 +1,9 @@
 interface IProps {
-  number: number;
+  value: string;
 }
 
 function Display(props: IProps) {
-  return <input readOnly value={props.number} type="number" />;
+  return <input readOnly value={props.value} />;
 }
 
 export default Display;

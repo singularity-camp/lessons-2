@@ -1,10 +1,14 @@
 import Numpad from "@/components/Numpad/Numpad";
 import Actions from "@/components/Actions/Actions";
 
-function Buttons() {
+interface IProps {
+  handleNumClick: (value: string) => void;
+}
+
+function Buttons(props: IProps) {
   return (
     <>
-      <Numpad />
+      <Numpad handleNumClick={props.handleNumClick} />
       <Actions />
     </>
   );
