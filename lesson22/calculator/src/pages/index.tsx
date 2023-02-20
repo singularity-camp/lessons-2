@@ -6,27 +6,69 @@ import { useState } from "react";
 import { Operator, Equal } from "@/types";
 
 export default function Home() {
-  const [value1, setValue1] = useState("");
-  const [value2, setValue2] = useState("");
+  const [storage, setStorage] = useState(0);
+  const [display, setDisplay] = useState("");
   const [operator, setOperator] = useState<Operator | "">("");
 
-  console.log("value1", value1);
-  console.log("operator", operator);
-  console.log("value2", value2);
-
   const handleNumClick = (value: string) => {
-    if (operator) {
-      setValue2((prevValue2) => `${prevValue2}${value}`);
-      return;
-    }
-    setValue1((prevValue1) => `${prevValue1}${value}`);
+    setDisplay((prevValue) => `${prevValue}${value}`);
   };
 
-  const handleOperatorClick = (operator: Operator | Equal) => {
-    if (operator === "=") {
-      return;
+  const handleOperatorClick = (newOperator: Operator | Equal) => {
+    switch (newOperator) {
+      case "+":
+      case "-":
+      case "*":
+      case "/":
+        setStorage((prevStorage) => {
+          if (operator) {
+            let result = 0;
+            switch (operator) {
+              case "+":
+                result = prevStorage + Number(display);
+                break;
+              case "-":
+                result = prevStorage - Number(display);
+                break;
+              case "*":
+                result = prevStorage * Number(display);
+                break;
+              case "/":
+                result = prevStorage / Number(display);
+                break;
+            }
+            return result;
+          }
+
+          return prevStorage;
+        });
+        setOperator(newOperator);
+        setDisplay("");
+        break;
+      case "=":
+        setDisplay((prevDisplay) => {
+          if (operator) {
+            let result = 0;
+            switch (operator) {
+              case "+":
+                result = storage + Number(prevDisplay);
+                break;
+              case "-":
+                result = storage - Number(prevDisplay);
+                break;
+              case "*":
+                result = storage * Number(prevDisplay);
+                break;
+              case "/":
+                result = storage / Number(prevDisplay);
+                break;
+            }
+            return result.toString();
+          }
+
+          return prevDisplay;
+        });
     }
-    setOperator(operator);
   };
 
   return (
@@ -38,7 +80,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Display value="-4" />
+        <Display value={display} />
         <Buttons
           handleNumClick={handleNumClick}
           handleOperatorClick={handleOperatorClick}
