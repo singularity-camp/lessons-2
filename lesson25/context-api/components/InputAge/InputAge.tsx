@@ -2,7 +2,7 @@
 "use client";
 
 const InputAge = () => {
-  return <input type="number" placeholder="Age" />;
+  return <input type="number" name="userAge" placeholder="Age" />;
 };
 
 export default InputAge;
