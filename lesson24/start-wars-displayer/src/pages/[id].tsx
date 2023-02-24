@@ -1,8 +1,8 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import List from "@/components/List/";
+import Person from "@/components/Person";
 
-export default function Home() {
+export default function PersonPage() {
   return (
     <>
       <Head>
@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <List />
+        <Person />
       </main>
     </>
   );
