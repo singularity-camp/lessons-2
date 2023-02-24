@@ -2,7 +2,7 @@
 "use client";
 
 const InputName = () => {
-  return <input type="text" />;
+  return <input type="text" placeholder="Name" />;
 };
 
 export default InputName;
