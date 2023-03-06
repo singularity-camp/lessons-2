@@ -13,11 +13,14 @@
     "tsc:todo-app": "npm run ttsc -- --project ./projects/todo-app/tsconfig.json",
     "tsc:tic-tac-toe": "npm run ttsc -- --project ./projects/tic-tac-toe/tsconfig.json",
     "tsc:sample-router": "npm run ttsc -- --project ./projects/sample-router/tsconfig.json",
+    "tsc:lesson28": "npm run ttsc -- --project ./lesson28/tsconfig.json",
     "tailwind:tic-tac-toe": "tailwindcss --content ./projects/tic-tac-toe/**/*.{html,js,ts} -i ./projects/tic-tac-toe/src/index.css -o ./projects/tic-tac-toe/dist/index.css",
     "clean:tic-tac-toe": "rimraf ./projects/tic-tac-toe/dist",
     "clean:sample-router": "rimraf ./projects/sample-router/dist",
+    "clean:lesson28": "rimraf ./lesson28/dist",
     "build:tic-tac-toe": "npm run clean:tic-tac-toe && npm run tsc:tic-tac-toe && npm run tailwind:tic-tac-toe",
     "build:sample-router": "npm run clean:sample-router && npm run tsc:sample-router",
+    "build:lesson28": "npm run clean:lesson28 && npm run tsc:lesson28",
     "serve:lesson11": "http-server ./lesson11/",
     "serve:lesson12": "http-server ./lesson12/",
     "serve:lesson13": "http-server ./lesson13/",
@@ -25,9 +28,11 @@
     "serve:lesson18": "http-server ./lesson18/",
     "serve:todo-app": "http-server --proxy http://localhost:4001 ./projects/todo-app/",
     "serve:tic-tac-toe": "http-server -c-1 ./projects/tic-tac-toe/",
+    "serve:lesson28": "http-server -c-1 ./lesson28/",
     "serve:sample-router": "superstatic --config=./projects/sample-router/superstatic.json ./projects/sample-router/",
     "start:tic-tac-toe": "npm run build:tic-tac-toe && npm run serve:tic-tac-toe",
-    "start:sample-router": "npm run build:sample-router && npm run serve:sample-router"
+    "start:sample-router": "npm run build:sample-router && npm run serve:sample-router",
+    "start:lesson28": "npm run build:lesson28 && npm run serve:lesson28"
   },
   "repository": {
     "type": "git",
