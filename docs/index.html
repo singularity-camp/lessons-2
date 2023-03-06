@@ -2,9 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lessons 2</title>
+    <title>Tic-tac-toe</title>
+    <link href="./assets/favicon.ico" rel="icon" type="image/x-icon">
+    <script async src="./dist/index.js" type="module"></script>
+    <link href="./dist/index.css" rel="stylesheet">
 </head>
 <body>
-<h1>Our lessons 2 page</h1>
+<div class="hidden flex justify-center" id="page-tournament-intro">
+    <section class="hero border border-base-100 rounded-md w-1/2 bg-base-100 shadow-xl mt-14">
+        <article class="hero-content flex-col">
+            <header>
+                <h1 class="text-2xl font-bold">Welcome to Tic Tac Toe tournament!</h1>
+            </header>
+            <main class="flex flex-col">
+                <h2 class="text-xl font-bold mt-3">Our players</h2>
+                <ul class="players mt-3" id="players-list"></ul>
+                <button class="btn btn-primary self-end mt-3" id="btn-start-tournament">Start tournament</button>
+            </main>
+        </article>
+    </section>
+</div>
+
+<div class="hidden flex justify-center" id="page-game-intro">
+    <section class="hero border border-base-100 rounded-md w-1/2 bg-base-100 shadow-xl mt-14">
+        <article class="hero-content flex-col">
+            <div class="w-6 ml-auto">
+                <svg class="circular-progress" viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" id="circle-progress-intro" r="55" stroke-width="10"/>
+                </svg>
+            </div>
+            <header>
+                <h1 class="text-2xl font-bold">Game #<em id="game-number"></em></h1>
+            </header>
+            <main class="flex flex-col">
+                <ul class="flex w-full mt-3">
+                    <li class="card card-compact" id="player1-card-intro"></li>
+                    <div class="divider divider-horizontal w-max mx-3 text-3xl">VS</div>
+                    <li class="card card-compact" id="player2-card-intro"></li>
+                </ul>
+            </main>
+        </article>
+    </section>
+</div>
+
+<div class="hidden playboard" id="page-playboard">
+    <section class="hero border border-base-100 rounded-md w-[50vw] bg-base-100 shadow-xl mt-14">
+        <article class="hero-content w-full flex-col">
+            <main class="mt-3 w-full flex items-center gap-[2%]">
+                <aside class="player-info" id="player1-info"></aside>
+                <ul class="playarea" id="playarea"></ul>
+                <aside class="player-info" id="player2-info"></aside>
+            </main>
+        </article>
+    </section>
+</div>
+
+<div class="hidden flex justify-center" id="page-game-result">
+    <section class="hero border border-base-100 rounded-md w-1/2 bg-base-100 shadow-xl mt-14">
+        <article class="hero-content flex-col">
+            <div class="w-6 ml-auto">
+                <svg class="circular-progress" viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" id="circle-progress-result" r="55" stroke-width="10"/>
+                </svg>
+            </div>
+            <main class="flex flex-col">
+                <ul class="flex w-full mt-3">
+                    <li class="card card-compact" id="player1-card-result"></li>
+                    <div class="divider divider-horizontal w-max mx-3 text-3xl">VS</div>
+                    <li class="card card-compact" id="player2-card-result"></li>
+                </ul>
+            </main>
+        </article>
+    </section>
+</div>
+
+<div class="hidden flex justify-center" id="page-tournament-result">
+    <section class="hero border border-base-100 rounded-md w-1/2 bg-base-100 shadow-xl mt-14">
+        <article class="hero-content flex-col">
+            <h1 class="text-4xl">Comming soon...</h1>
+        </article>
+    </section>
+</div>
+
 </body>
 </html>
